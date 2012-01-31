@@ -12,7 +12,7 @@ import urllib
 
 def getyourversion():
 
-	p = urllib.urlopen("http://pktmaniac.info")
+	p = urllib.urlopen("http://aconaway.com")
 	#p = str(p)
 
 	for line in p:
@@ -21,6 +21,8 @@ def getyourversion():
 			awesome = awesome[-2]
 			awesome = awesome[:-1]
 			return awesome
+		else:
+			return False
 
 def getlatestversion():
 	
@@ -36,8 +38,11 @@ def getlatestversion():
 mine = getyourversion()
 theirs = getlatestversion()
 
-if mine == theirs:
-	print "Latest version"
+if mine == False:
+	print "Can't find your version info."
 else:
-	print "you need to update %s %s" % (mine, theirs)
+	if mine == theirs:
+		print "You're running the latest version, Good Job!"
+	else:
+		print "You need to update. You're running version \"%s\" and the latest version is \"%s\"" % (mine, theirs)
 	
