@@ -37,7 +37,13 @@ def getlatestversion():
 			awesome = awesome[:-10]
 			return awesome
 
-print yourversion
+if yourversion[:7] != "http://":
+	if yourversion[:8] == "https://":
+		print "please use http"
+		yourversion = "http://" + yourversion[8:]
+	else:
+		yourversion = "http://" + yourversion
+
 mine = getyourversion(yourversion)
 theirs = getlatestversion()
 
