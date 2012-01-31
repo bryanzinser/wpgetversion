@@ -39,7 +39,7 @@ def getlatestversion():
 
 if yourversion[:7] != "http://":
 	if yourversion[:8] == "https://":
-		print "please use http"
+		print "Please use http://, but since you're so nice I'll do it for you!"
 		yourversion = "http://" + yourversion[8:]
 	else:
 		yourversion = "http://" + yourversion
