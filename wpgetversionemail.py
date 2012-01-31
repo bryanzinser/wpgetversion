@@ -25,7 +25,7 @@ def sendemail(a, b):
 	msg['From'] = from_mail
 	msg['To'] = to_mail
 	s = smtplib.SMTP('localhost')
-	s.sendmail(from_mail, [to_mail], mas.as_string())
+	s.sendmail(from_mail, [to_mail], msg.as_string())
 	s.quit()
 
 def getyourversion(b):
