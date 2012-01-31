@@ -4,6 +4,8 @@
 wpgetversion.py
 
 Created by Bryan Zinser on 2012-01-31.
+
+Version 0.1
 """
 
 import sys
