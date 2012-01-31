@@ -29,23 +29,18 @@ def sendemail(a, b):
 	s.quit()
 
 def getyourversion(b):
-
 	p = urllib.urlopen(b)
-	#p = str(p)
-
+	#find and format your WordPress version
 	for line in p:
 		if "generator" in line:
 			awesome = line.split(' ')
 			awesome = awesome[-2]
 			awesome = awesome[:-1]
 			return awesome
-		#else:
-			#return False
 
-def getlatestversion():
-	
+def getlatestversion():	
 	p = urllib.urlopen("http://wordpress.org")
-
+	#find and format latest Wordpress version
 	for line in p:
 		if "Download&nbsp;WordPress&nbsp;" in line:
 			awesome = line.split(';')
