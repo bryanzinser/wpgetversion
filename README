@@ -3,5 +3,3 @@ Checks to see if your site is running the most up to date version of wordpress.
 This likes to break very easily.
 
 Example: python wpgetversion.py http://routescribe.com
-
-v0.1
