@@ -9,7 +9,6 @@ Version 0.1
 """
 
 import sys
-import os
 import urllib
 
 script, yourversion = sys.argv
