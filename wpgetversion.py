@@ -10,9 +10,11 @@ import sys
 import os
 import urllib
 
-def getyourversion():
+script, yourversion = sys.argv
 
-	p = urllib.urlopen("http://aconaway.com")
+def getyourversion(b):
+
+	p = urllib.urlopen(b)
 	#p = str(p)
 
 	for line in p:
@@ -21,8 +23,8 @@ def getyourversion():
 			awesome = awesome[-2]
 			awesome = awesome[:-1]
 			return awesome
-		else:
-			return False
+		#else:
+			#return False
 
 def getlatestversion():
 	
@@ -34,11 +36,12 @@ def getlatestversion():
 			awesome = awesome[-1]
 			awesome = awesome[:-10]
 			return awesome
-			
-mine = getyourversion()
+
+print yourversion
+mine = getyourversion(yourversion)
 theirs = getlatestversion()
 
-if mine == False:
+if mine == None:
 	print "Can't find your version info."
 else:
 	if mine == theirs:
