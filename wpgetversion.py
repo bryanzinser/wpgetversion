@@ -18,10 +18,11 @@ def getyourversion(b):
 	#find and format your WordPress version
 	for line in p:
 		if "generator" in line:
-			awesome = line.split(' ')
-			awesome = awesome[-2]
-			awesome = awesome[:-1]
-			return awesome
+			awesome = line.split('"')
+			for what in awesome:
+				if "WordPress" in what:
+					awesome = what[10:]
+	return awesome
 
 def getlatestversion():	
 	p = urllib.urlopen("http://wordpress.org")
@@ -31,7 +32,7 @@ def getlatestversion():
 			awesome = line.split(';')
 			awesome = awesome[-1]
 			awesome = awesome[:-10]
-			return awesome
+	return awesome
 
 if yourversion[:7] != "http://":
 	if yourversion[:8] == "https://":
