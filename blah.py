@@ -64,10 +64,10 @@ if __name__ == '__main__':
 			versions[website] = getversion(website)
 		for site in versions:
 			if versions[site] == getwpversion():
-				x = x + "%s is uptodate!" % site
+				x = x + "%s is uptodate!\n" % site
 				print "%s is uptodate!" % site
 			else:
-				x = x + "%s is out of date %s!=%s" % (site, versions[site], getwpversion())
+				x = x + "%s is out of date %s!=%s\n" % (site, versions[site], getwpversion())
 				print "%s is out of date %s!=%s" % (site, versions[site], getwpversion())
 				needsupdated = True
 		if needsupdated == True:
