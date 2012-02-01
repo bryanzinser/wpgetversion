@@ -22,7 +22,7 @@ def sendemail(x):
 	msg['From'] = args.email[0]
 	msg['To'] = args.email[1]
 	s = smtplib.SMTP('localhost')
-	s.sendmail(from_mail, [to_mail], msg.as_string())
+	s.sendmail(args.email[0], [args.email[1]], msg.as_string())
 	s.quit()
 
 def getversion(b):
