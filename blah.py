@@ -4,14 +4,14 @@
 blah.py
 
 Created by Bryan Zinser on 2012-02-01.
-Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+v0.2
 """
 
 import argparse, urllib, smtplib
 from email.mime.text import MIMEText
 
 versions = {}
-fuck = []
+fucked = []
 needsupdated = False
 x = ""
 
@@ -51,8 +51,21 @@ if __name__ == '__main__':
 	parser.add_argument('-e', dest="email", metavar='Email', action="store", nargs='+', help="FROM@example.com TO@example.com")
 	parser.add_argument('-w', dest="websites", metavar='Website', action="store", nargs='+', help='websites to check')
 	args = parser.parse_args()
+
+	for fuck in args.websites:
+		if fuck[:7] != "http://":
+			if fuck[:8] == "https://":
+				print "Please use http://, but since you're so nice I'll do it for you!"
+				fuck = "http://" + fuck[8:]
+				fucked.append(fuck)
+			else:
+				fuck = "http://" + fuck
+				fucked.append(fuck)
+		else:
+			fucked.append(fuck)
+	
 	if args.email == None:
-		for website in args.websites:
+		for website in fucked:
 			versions[website] = getversion(website)
 		for site in versions:
 			if versions[site] == getwpversion():
@@ -60,7 +73,7 @@ if __name__ == '__main__':
 			else:
 				print "%s is out of date %s!=%s" % (site, versions[site], getwpversion())
 	else:
-		for website in args.websites:
+		for website in fucked:
 			versions[website] = getversion(website)
 		for site in versions:
 			if versions[site] == getwpversion():
