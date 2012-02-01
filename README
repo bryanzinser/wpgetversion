@@ -1,6 +1,6 @@
 Checks to see if your site is running the most up to date version of wordpress.
 
-This likes to break very easily.
+<p>This likes to break very easily.<p>
 
 Example: python wpgetversion.py -w routescribe.com 3fives.com
 
