@@ -67,8 +67,8 @@ if __name__ == '__main__':
 				x = x + "%s is uptodate!" % site
 				print "%s is uptodate!" % site
 			else:
-				x = x + "%s is out of date %s!=%s\n" % (site, versions[site], getwpversion())
-				print "%s is out of date %s!=%s\n" % (site, versions[site], getwpversion())
+				x = x + "%s is out of date %s!=%s" % (site, versions[site], getwpversion())
+				print "%s is out of date %s!=%s" % (site, versions[site], getwpversion())
 				needsupdated = True
 		if needsupdated == True:
 			sendemail(x)
