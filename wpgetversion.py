@@ -11,12 +11,11 @@ import argparse, urllib, smtplib
 from email.mime.text import MIMEText
 
 versions = {}
-fucked = []
+cleanedsites = []
 needsupdated = False
 x = ""
 
 def sendemail(x):
-	#fp = "You need to update. You're running version \"%s\" and the latest version is \"%s\"" % (a, b)
 	msg = MIMEText(x)
 	msg['Subject'] = 'Hey update your WordPress install!'
 	msg['From'] = args.email[0]
@@ -52,20 +51,20 @@ if __name__ == '__main__':
 	parser.add_argument('-w', dest="websites", metavar='Website', action="store", nargs='+', help='websites to check')
 	args = parser.parse_args()
 
-	for fuck in args.websites:
-		if fuck[:7] != "http://":
-			if fuck[:8] == "https://":
+	for yay in args.websites:
+		if yay[:7] != "http://":
+			if yay[:8] == "https://":
 				print "Please use http://, but since you're so nice I'll do it for you!"
-				fuck = "http://" + fuck[8:]
-				fucked.append(fuck)
+				yay = "http://" + yay[8:]
+				cleanedsites.append(yay)
 			else:
-				fuck = "http://" + fuck
-				fucked.append(fuck)
+				yay = "http://" + yay
+				cleanedsites.append(yay)
 		else:
-			fucked.append(fuck)
+			cleanedsites.append(yay)
 	
 	if args.email == None:
-		for website in fucked:
+		for website in cleanedsites:
 			versions[website] = getversion(website)
 		for site in versions:
 			if versions[site] == getwpversion():
@@ -73,7 +72,7 @@ if __name__ == '__main__':
 			else:
 				print "%s is out of date %s!=%s" % (site, versions[site], getwpversion())
 	else:
-		for website in fucked:
+		for website in cleanedsites:
 			versions[website] = getversion(website)
 		for site in versions:
 			if versions[site] == getwpversion():
